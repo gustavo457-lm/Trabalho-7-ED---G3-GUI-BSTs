@@ -1,19 +1,20 @@
 from Arvore import BST
 from Node import Node
 
+
 def separaTexto():
     print("-"*50)
 
 def main():
     tree = BST()
-    tree.root=Node(4)
+    tree.root=Node(10)
+    tree.insert(tree.root, 5)
+    tree.insert(tree.root, 12)
     tree.insert(tree.root, 3)
-    tree.insert(tree.root, 10)
     tree.insert(tree.root, 7)
-    tree.insert(tree.root, 9)
-    tree.insert(tree.root, 2)
-    tree.insert(tree.root, 0)
-    tree.insert(tree.root, 9)
+    tree.insert(tree.root, 11)
+    tree.insert(tree.root, 15)
+    tree.insert(tree.root, 16)
     '''testes de balanceamentos
     tree.insert(tree.root, 11)
     tree.insert(tree.root, 12)
@@ -42,9 +43,13 @@ def main():
     separaTexto()
     print(f"Menor elemento da árvore: {tree.buscaMenorElement(tree.root)}")
     separaTexto()
+    print(f"Comprimento Interno: {tree.buscaComprimentoInterno(tree.root)}")
+
     tree.verificaArvoreBalanceada(tree.root)
     #tree.limparArvore() metodo que limpa a arvore, (modificar os valores vazios)
     
     #tree.levelOrder(tree.root)
+
+
 
 main()

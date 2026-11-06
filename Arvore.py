@@ -49,7 +49,20 @@ class BST:
 
     #def levelOrder(self, node):
         #for i in range(self.size(node)):
+    def depht(self, num):
+        x = self.root
+        depht = 0
+        while x:
+            if x.item == num:
+                return depht
             
+            depht += 1
+
+            if num < x.item:
+                x = x.left
+            else:
+                x = x.right 
+        return -1
 
     def buscaMaiorElement(self, x):
         if x is None:
@@ -94,7 +107,8 @@ class BST:
 
     def buscaComprimentoInterno(self, node):
         if node is None:
-            return node
+            return 0
+        return self.depht(node.item) + self.buscaComprimentoInterno(node.left) + self.buscaComprimentoInterno(node.right)
     
     def verificaArvoreBalanceada(self, node):
         hLeft = self.height(node.left) + 1
@@ -103,3 +117,5 @@ class BST:
             print("Arvore não Balanceada")
         else:
             print("Arvore Balanceada")
+
+
