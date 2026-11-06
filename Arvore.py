@@ -1,18 +1,12 @@
-class Node:
-    def __init__(self, item):
-        self.item=item
-        self.right=None
-        self.left=None
+from Node import Node
 
 class BST:
     def __init__(self):
         self.root = None
 
     def put(self, x, item):
-
         if x is None:
             return Node(item)
-        
         elif item>x.item:
             x.right=self.put(x.right, item)
         elif item<x.item:
@@ -26,15 +20,19 @@ class BST:
         else:
            return 1 + self.size(x.left)+self.size(x.right)
         
-       
-
     def height(self, x):
         if x is None:
             return -1
         else:
             return 1+max(self.height(x.left), self.height(x.right))
 
-        
+    def EmOrder(self, node):
+        if node is None:
+            return node
+        self.EmOrder(node.left)
+        print(node.item)
+        self.EmOrder(node.right)
+
     def preOrder(self, node):
         if node is None:
             return node
@@ -42,9 +40,15 @@ class BST:
         self.preOrder(node.left)
         self.preOrder(node.right)
 
-    
+    def posOrder(self, node):
+        if node is None:
+            return node
+        self.posOrder(node.left)
+        self.posOrder(node.right)
+        print(node.item)
 
-
+    def levelOrder(self, node):
+        
 tree=BST()
 
 tree.root=Node(4)
@@ -55,33 +59,10 @@ tree.put(tree.root, 9)
 tree.put(tree.root, 2)
 tree.put(tree.root, 0)
 tree.put(tree.root, 9)
-tree.preOrder(tree.root)
+tree.levelOrder(tree.root)
 print("----")
 
 print(tree.height(tree.root))
 print('----')
 print(tree.size(tree.root))
-
-     
-        
-            
-        
-
-    
-       
-           
-
-
-        
-
-
-    
-
-
-
-
-
-        
-       
-
-        
+#tree.levelOrder(tree.root)
