@@ -4,13 +4,13 @@ class BST:
     def __init__(self):
         self.root = None
 
-    def put(self, x, item):
+    def insert(self, x, item):
         if x is None:
             return Node(item)
         elif item>x.item:
-            x.right=self.put(x.right, item)
+            x.right=self.insert(x.right, item)
         elif item<x.item:
-            x.left=self.put(x.left, item)
+            x.left=self.insert(x.left, item)
 
         return x
 
@@ -30,13 +30,13 @@ class BST:
         if node is None:
             return node
         self.EmOrder(node.left)
-        print(node.item)
+        print(f"{node.item} ", end='')
         self.EmOrder(node.right)
 
     def preOrder(self, node):
         if node is None:
             return node
-        print(node.item)
+        print(f"{node.item} ", end='')
         self.preOrder(node.left)
         self.preOrder(node.right)
 
@@ -45,24 +45,61 @@ class BST:
             return node
         self.posOrder(node.left)
         self.posOrder(node.right)
-        print(node.item)
+        print(f"{node.item} ", end='')
 
-    def levelOrder(self, node):
+    #def levelOrder(self, node):
+        #for i in range(self.size(node)):
+            
+
+    def buscaMaiorElement(self, x):
+        if x is None:
+            return -99999
+        maior = x.item
+        maiorRight = self.buscaMaiorElement(x.right)
+        maiorLeft = self.buscaMaiorElement(x.left)
+        if maior < maiorRight and maiorLeft < maiorRight:
+            maior = maiorRight
+        elif maior < maiorLeft and maiorRight < maiorLeft:
+            maior = maiorLeft
+        return maior
+
+    def buscaMenorElement(self, x):
+        if x is None:
+            return 99999
+        menor = x.item
+        menorRight = self.buscaMenorElement(x.right)
+        menorLeft = self.buscaMenorElement(x.left)
+        if menor > menorRight and menorLeft > menorRight:
+            menor = menorRight
+        elif menor > menorLeft and menorRight > menorLeft:
+            menor = menorLeft
+        return menor
+
+    def consultaChave(self, node, valor):
+        if node is None:
+            print(f"{valor} não foi encontrado na árvore")
+            return node
+
+        if valor == node.item:
+            print(f"{valor} foi encontrado na árvore")
         
-tree=BST()
+        elif valor < node.item:
+            self.consultaChave(node.left, valor) 
 
-tree.root=Node(4)
-tree.put(tree.root, 3)
-tree.put(tree.root, 10)
-tree.put(tree.root, 7)
-tree.put(tree.root, 9)
-tree.put(tree.root, 2)
-tree.put(tree.root, 0)
-tree.put(tree.root, 9)
-tree.levelOrder(tree.root)
-print("----")
+        elif valor > node.item:
+            self.consultaChave(node.right, valor) 
 
-print(tree.height(tree.root))
-print('----')
-print(tree.size(tree.root))
-#tree.levelOrder(tree.root)
+    def limparArvore(self):
+        self.root = None
+
+    def buscaComprimentoInterno(self, node):
+        if node is None:
+            return node
+    
+    def verificaArvoreBalanceada(self, node):
+        hLeft = self.height(node.left) + 1
+        hRight = self.height(node.right) + 1
+        if (hLeft - hRight) > 1 or (hRight - hLeft) > 1:
+            print("Arvore não Balanceada")
+        else:
+            print("Arvore Balanceada")
