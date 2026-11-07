@@ -47,8 +47,22 @@ class BST:
         self.posOrder(node.right)
         print(f"{node.item} ", end='')
 
-    #def levelOrder(self, node):
-        #for i in range(self.size(node)):
+    def levelOrder(self, node, nivelAtual=0):
+        if node is None:
+            return
+
+        profundidadeNo = self.depht(node.item)
+
+        if profundidadeNo == nivelAtual:
+            print(f"{node.item} ", end='')
+
+        elif profundidadeNo < nivelAtual:
+            self.levelOrder(node.left, nivelAtual)
+            self.levelOrder(node.right, nivelAtual)
+
+        if profundidadeNo == 0 and nivelAtual < self.height(node):
+            self.levelOrder(node, nivelAtual + 1)
+            
     def depht(self, num):
         x = self.root
         depht = 0
