@@ -26,14 +26,22 @@ def main():
     print("Travessia em-ordem: ")
     tree.EmOrder(tree.root)
     print()
+
     separaTexto()
     print("Travessia pós-ordem: ")
     tree.posOrder(tree.root)
     print()
+
     separaTexto()
     print("Travessia pré-ordem: ")
     tree.preOrder(tree.root)
     print()
+
+    separaTexto()
+    print("Travessia em nível: ")
+    tree.levelOrder(tree.root)
+    print()
+
     separaTexto()
     print(f"Altura da árvore: {tree.height(tree.root)}")
     separaTexto()
@@ -44,8 +52,9 @@ def main():
     print(f"Menor elemento da árvore: {tree.buscaMenorElement(tree.root)}")
     separaTexto()
     print(f"Comprimento Interno: {tree.buscaComprimentoInterno(tree.root)}")
-
+    separaTexto()
     tree.verificaArvoreBalanceada(tree.root)
+    separaTexto()
     #tree.limparArvore() metodo que limpa a arvore, (modificar os valores vazios)
     
     #tree.levelOrder(tree.root)
