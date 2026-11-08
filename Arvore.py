@@ -106,7 +106,7 @@ class BST:
 
     def buscaMaiorElement(self, x):
         if x is None:
-            return -99999
+            return "A árvore está vazia"
         if x.right is None:
             return x.item
 
@@ -114,7 +114,7 @@ class BST:
     
     def buscaMenorElement(self, x):
         if x is None:
-            return -99999
+            return "A árvore está vazia"
         if x.left is None:
             return x.item
 

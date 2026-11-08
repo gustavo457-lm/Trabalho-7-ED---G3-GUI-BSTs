@@ -219,6 +219,7 @@ class InterfaceBST:
         tamanho = self.tree.size(self.tree.root)
 
         maior = self.tree.buscaMaiorElement(self.tree.root)
+
         menor = self.tree.buscaMenorElement(self.tree.root)
 
         comprimento = self.tree.buscaComprimentoInterno(
