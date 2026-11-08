@@ -14,6 +14,30 @@ class BST:
 
         return x
 
+    def insertIndividual(self, valor_texto):
+        try:
+            valor = int(valor_texto)
+            
+            self.root = self.insert(self.root, valor)
+            print(f"Elemento {valor} inserido individualmente com sucesso.")
+            
+        except ValueError:
+            print(f"Erro: O valor '{valor_texto}' do campo de texto não é um número válido.")
+
+    def insertLote(self, nome_arquivo):
+        try:
+            with open(nome_arquivo, 'r') as arquivo:
+                conteudo = arquivo.read()
+                valores = conteudo.split()
+
+                for val in valores:
+                    self.insertIndividual(val)
+                    
+            print(f"--- Fim da inserção em lote do arquivo '{nome_arquivo}' ---")
+            
+        except FileNotFoundError:
+            print(f"Erro: O arquivo '{nome_arquivo}' não foi encontrado.")
+
     def size(self, x):
         if x is None:
             return 0
@@ -128,8 +152,8 @@ class BST:
         hLeft = self.height(node.left) + 1
         hRight = self.height(node.right) + 1
         if (hLeft - hRight) > 1 or (hRight - hLeft) > 1:
-            print("Arvore não Balanceada")
+            return ("Árvore não Balanceada")
         else:
-            print("Arvore Balanceada")
+            return ("Árvore Balanceada")
 
 
