@@ -13,13 +13,19 @@ def main():
     tree.insert(tree.root, 11)
     tree.insert(tree.root, 15)
     tree.insert(tree.root, 16)
-    '''testes de balanceamentos
-    tree.insert(tree.root, 11)
-    tree.insert(tree.root, 12)
-    tree.insert(tree.root, 13)
-    tree.insert(tree.root, 14)
-    tree.insert(tree.root, 1)
-    tree.insert(tree.root, 15)'''
+
+    '''
+    # 1. Inserindo um lote inicial a partir de um arquivo txt
+    #tree.insertLote("dados .txt")
+
+    2. Usuário digita um valor em um campo de texto na interface
+    entrada_usuario = "25" 
+    tree.insertIndividual(entrada_usuario)
+
+    # 3. Usuário digita outro valor
+    entrada_usuario2 = "5"
+    tree.insertIndividual(entrada_usuario2)'''
+
     separaTexto()
     print("Travessia em-ordem: ")
     tree.EmOrder(tree.root)
@@ -45,9 +51,10 @@ def main():
 
     tree.verificaArvoreBalanceada(tree.root)
     #tree.limparArvore() metodo que limpa a arvore, (modificar os valores vazios)
-    
-    #tree.levelOrder(tree.root)
 
-
-
+<<<<<<< HEAD
 main()
+=======
+main()
+
+>>>>>>> 77b797e8a20b7ec4886f03e407dbc9c1d1187ac2
