@@ -221,13 +221,21 @@ class InterfaceBST:
         maior = self.tree.buscaMaiorElement(self.tree.root)
 
         menor = self.tree.buscaMenorElement(self.tree.root)
+        if self.tree.root is None:
+            maior = "Árvore vazia"
+            menor = "Árvore vazia"
 
         comprimento = self.tree.buscaComprimentoInterno(
             self.tree.root
         )
+<<<<<<< Updated upstream
 
         informacoes = f"""
 
+=======
+        if self.tree.root:
+            informacoes = f"""
+>>>>>>> Stashed changes
 TRAVESSIAS
 --------------------------------------------
 
@@ -253,6 +261,8 @@ Maior elemento: {maior}
 Menor elemento: {menor}
 Comprimento interno: {comprimento}
 """
+        else:
+            informacoes = " "
 
         # Captura possível mensagem do método de balanceamento
         saida = StringIO()
@@ -264,10 +274,11 @@ Comprimento interno: {comprimento}
 
         resultado = saida.getvalue().strip()
 
-        if isinstance(balanceada, bool):
+        if self.tree.root is None:
+            resultado = "Árvore vazia"
+        else:
             resultado = "Balanceada" if balanceada else "Desbalanceada"
-        elif resultado == "":
-            resultado = str(balanceada)
+
 
         informacoes += f"\nBalanceamento: {resultado}\n"
 
