@@ -5,6 +5,8 @@ class BST:
         self.root = None
 
     def insert(self, x, item):
+        if self.root is None:
+            self.root = Node(item)
         if x is None:
             return Node(item)
         elif item>x.item:
@@ -22,7 +24,7 @@ class BST:
         
     def height(self, x):
         if x is None:
-            return -1
+            return 0
         else:
             return 1+max(self.height(x.left), self.height(x.right))
 
@@ -49,7 +51,7 @@ class BST:
 
     def levelOrder(self, node, nivelAtual=0):
         if node is None:
-            return
+            return node
 
         profundidadeNo = self.depht(node.item)
 
@@ -80,7 +82,7 @@ class BST:
 
     def buscaMaiorElement(self, x):
         if x is None:
-            return -99999
+            return -9999999
         maior = x.item
         maiorRight = self.buscaMaiorElement(x.right)
         maiorLeft = self.buscaMaiorElement(x.left)
@@ -92,7 +94,7 @@ class BST:
 
     def buscaMenorElement(self, x):
         if x is None:
-            return 99999
+            return 9999999
         menor = x.item
         menorRight = self.buscaMenorElement(x.right)
         menorLeft = self.buscaMenorElement(x.left)
@@ -105,16 +107,17 @@ class BST:
     def consultaChave(self, node, valor):
         if node is None:
             print(f"{valor} não foi encontrado na árvore")
-            return node
+            return False
 
         if valor == node.item:
             print(f"{valor} foi encontrado na árvore")
+            return True
         
         elif valor < node.item:
-            self.consultaChave(node.left, valor) 
+            return self.consultaChave(node.left, valor) 
 
         elif valor > node.item:
-            self.consultaChave(node.right, valor) 
+            return self.consultaChave(node.right, valor) 
 
     def limparArvore(self):
         self.root = None
@@ -125,11 +128,15 @@ class BST:
         return self.depht(node.item) + self.buscaComprimentoInterno(node.left) + self.buscaComprimentoInterno(node.right)
     
     def verificaArvoreBalanceada(self, node):
+        if self.root is None:
+            return False
         hLeft = self.height(node.left) + 1
         hRight = self.height(node.right) + 1
         if (hLeft - hRight) > 1 or (hRight - hLeft) > 1:
             print("Arvore não Balanceada")
+            return False
         else:
             print("Arvore Balanceada")
+            return True
 
 
