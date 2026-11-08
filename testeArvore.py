@@ -14,17 +14,14 @@ def main():
     tree.insert(tree.root, 15)
     tree.insert(tree.root, 16)
 
-    '''
-    # 1. Inserindo um lote inicial a partir de um arquivo txt
-    #tree.insertLote("dados .txt")
 
-    2. Usuário digita um valor em um campo de texto na interface
+    tree.insertLote("dados .txt")
+
     entrada_usuario = "25" 
     tree.insertIndividual(entrada_usuario)
 
-    # 3. Usuário digita outro valor
     entrada_usuario2 = "5"
-    tree.insertIndividual(entrada_usuario2)'''
+    tree.insertIndividual(entrada_usuario2)
 
     separaTexto()
     print("Travessia em-ordem: ")
