@@ -106,27 +106,19 @@ class BST:
 
     def buscaMaiorElement(self, x):
         if x is None:
-            return -9999999
-        maior = x.item
-        maiorRight = self.buscaMaiorElement(x.right)
-        maiorLeft = self.buscaMaiorElement(x.left)
-        if maior < maiorRight and maiorLeft < maiorRight:
-            maior = maiorRight
-        elif maior < maiorLeft and maiorRight < maiorLeft:
-            maior = maiorLeft
-        return maior
+            return -99999
+        if x.right is None:
+            return x.item
 
+        return self.buscaMaiorElement(x.right)
+    
     def buscaMenorElement(self, x):
         if x is None:
-            return 9999999
-        menor = x.item
-        menorRight = self.buscaMenorElement(x.right)
-        menorLeft = self.buscaMenorElement(x.left)
-        if menor > menorRight and menorLeft > menorRight:
-            menor = menorRight
-        elif menor > menorLeft and menorRight > menorLeft:
-            menor = menorLeft
-        return menor
+            return -99999
+        if x.left is None:
+            return x.item
+
+        return self.buscaMenorElement(x.left)
 
     def consultaChave(self, node, valor):
         if node is None:

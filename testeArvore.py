@@ -52,9 +52,4 @@ def main():
     tree.verificaArvoreBalanceada(tree.root)
     #tree.limparArvore() metodo que limpa a arvore, (modificar os valores vazios)
 
-<<<<<<< HEAD
 main()
-=======
-main()
-
->>>>>>> 77b797e8a20b7ec4886f03e407dbc9c1d1187ac2
