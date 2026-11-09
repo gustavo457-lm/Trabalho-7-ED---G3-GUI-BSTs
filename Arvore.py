@@ -149,10 +149,8 @@ class BST:
         hLeft = self.height(node.left) + 1
         hRight = self.height(node.right) + 1
         if (hLeft - hRight) > 1 or (hRight - hLeft) > 1:
-            print("Arvore não Balanceada")
-            return False
+            return "Não"
         else:
-            print("Arvore Balanceada")
-            return True
+            return "Sim"
 
 

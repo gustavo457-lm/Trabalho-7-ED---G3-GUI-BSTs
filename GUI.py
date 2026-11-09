@@ -176,6 +176,10 @@ class InterfaceBST:
         if arquivo:
             with open(arquivo, "r", encoding="UTF-8") as arquivo_numeros:
                 numeros = arquivo_numeros.read()
+                possui_letra = any(char.isalpha() for char in numeros)
+                if possui_letra:
+                    messagebox.showerror("Caractere indesejado", "O arquivo deve conter somente números")
+                    return
                 array_numeros = [x for x in re.split(r'[.,;:!?+\s/+-]', numeros)]
                 for num in array_numeros:
                     if num != '':
@@ -225,17 +229,11 @@ class InterfaceBST:
             maior = "Árvore vazia"
             menor = "Árvore vazia"
 
-        comprimento = self.tree.buscaComprimentoInterno(
-            self.tree.root
-        )
-<<<<<<< Updated upstream
-
-        informacoes = f"""
-
-=======
-        if self.tree.root:
+        comprimento = self.tree.buscaComprimentoInterno(self.tree.root)
+        balanceamento = self.tree.verificaArvoreBalanceada(self.tree.root)
+        if self.tree.root is not None:
             informacoes = f"""
->>>>>>> Stashed changes
+
 TRAVESSIAS
 --------------------------------------------
 
@@ -260,27 +258,11 @@ Tamanho: {tamanho}
 Maior elemento: {maior}
 Menor elemento: {menor}
 Comprimento interno: {comprimento}
+Balanceada?: {balanceamento}
 """
         else:
-            informacoes = " "
+            informacoes = ""
 
-        # Captura possível mensagem do método de balanceamento
-        saida = StringIO()
-
-        with redirect_stdout(saida):
-            balanceada = self.tree.verificaArvoreBalanceada(
-                self.tree.root
-            )
-
-        resultado = saida.getvalue().strip()
-
-        if self.tree.root is None:
-            resultado = "Árvore vazia"
-        else:
-            resultado = "Balanceada" if balanceada else "Desbalanceada"
-
-
-        informacoes += f"\nBalanceamento: {resultado}\n"
 
         self.informacoes.delete("1.0", tk.END)
         self.informacoes.insert(tk.END, informacoes)
